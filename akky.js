@@ -82,37 +82,20 @@ window.addEventListener("load",()=>{
 // CINEMATIC ENDING
 // ==============================
 
-const thankSection = document.querySelector(".thank-you");
 const blackScreen = document.querySelector(".black-screen");
-
-let endingPlayed = false;
-
-
-window.addEventListener("scroll",()=>{
+const thankSection = document.querySelector(".thank-you");
 
 
-    if(endingPlayed) return;
+window.addEventListener("scroll", function(){
+
+    const sectionTop = thankSection.offsetTop;
+    const scrollPosition = window.scrollY + window.innerHeight;
 
 
-    const position = thankSection.getBoundingClientRect().top;
+    if(scrollPosition > sectionTop + 100){
 
-
-    if(position < window.innerHeight * 0.3){
-
-
-        endingPlayed = true;
-
-
-        setTimeout(()=>{
-
-            blackScreen.classList.add("show");
-
-        },1500);
-
+        blackScreen.classList.add("show");
 
     }
 
-
 });
-
-blackScreen.classList.add("show");
