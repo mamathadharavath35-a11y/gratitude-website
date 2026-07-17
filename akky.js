@@ -114,3 +114,5 @@ window.addEventListener("scroll",()=>{
 
 
 });
+
+blackScreen.classList.add("show");
