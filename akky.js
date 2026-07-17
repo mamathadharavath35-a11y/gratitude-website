@@ -1,82 +1,119 @@
-const text = `Dear Executive Akky,
+// ==============================
+// SCROLL REVEAL ANIMATION
+// ==============================
 
-Thank you for being such an important part of my life.
+const revealElements = document.querySelectorAll(
+  ".memory-card, .thought-card, .letter-box, .apology-box, .ending, .thank-you"
+);
 
-This website is something I built while learning web development.
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
 
-Every section here carries a memory, and every line carries gratitude.
+    if (entry.isIntersecting) {
 
-❤️`;
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
 
-const typingText = document.getElementById("typing-text");
+    }
 
-let index = 0;
+  });
+},{
+  threshold:0.15
+});
+
+revealElements.forEach((el)=>{
+
+  el.style.opacity="0";
+  el.style.transform="translateY(40px)";
+  el.style.transition="0.8s ease";
+
+  observer.observe(el);
+
+});
+
+
+
+
+// ==============================
+// LETTER TYPEWRITER
+// ==============================
+
+const letter=document.querySelector(".letter-content p");
+
+const originalText=letter.innerHTML;
+
+letter.innerHTML="";
+
+let i=0;
 
 function typeLetter(){
 
-    typingText.innerHTML += text.charAt(index);
+  if(i<originalText.length){
 
-    let delay = Math.random()*60 + 60;
+    letter.innerHTML+=originalText.charAt(i);
 
-    if(text.charAt(index) === " "){
-        delay = 100;
-    }
+    i++;
 
-    if(text.charAt(index) === "," || text.charAt(index) === "."){
-        delay = 250;
-    }
+    setTimeout(typeLetter,10);
 
-    index++;
-
-    if(index < text.length){
-
-        setTimeout(typeLetter, delay);
-
-    }
+  }
 
 }
 
+window.addEventListener("load",()=>{
+
+  setTimeout(typeLetter,1000);
+
+});
 
 
-const letterSection = document.querySelector(".letter");
+// ==============================
+// THANK YOU FADE
+// ==============================
 
-const observer = new IntersectionObserver((entries)=>{
-    if(entries[0].isIntersecting){
-        typeLetter();
+const thank=document.querySelector(".thank-you");
+
+window.addEventListener("scroll",()=>{
+
+  const position=thank.getBoundingClientRect().top;
+
+  const screen=window.innerHeight;
+
+  if(position<screen-100){
+
+    thank.style.transition="1.2s";
+
+    thank.style.opacity="1";
+
+  }
+
+});
+
+thank.style.opacity="0";
+
+
+
+const ending = document.querySelector(".thank-you");
+const blackScreen = document.querySelector(".black-screen");
+
+let endingPlayed = false;
+
+window.addEventListener("scroll", () => {
+
+    if (endingPlayed) return;
+
+    const position = ending.getBoundingClientRect().top;
+
+    if (position < window.innerHeight / 2) {
+
+        endingPlayed = true;
+
+        setTimeout(() => {
+
+            blackScreen.classList.add("show");
+
+        }, 1500);
+
     }
-});
-
-observer.observe(letterSection);
-
-const hiddenElements =  document.querySelectorAll(".hidden");
-
-const observer2 = new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-})
-
-hiddenElements.forEach((element)=>{
-    observer2.observe(element);
-});
-
-const journeyBtn = document.getElementById("journeyBtn");
-
-journeyBtn.addEventListener("click",function(){
-    journeyBtn.style.transform = "scale(0.95)";
-
-    setTimeout(function(){
-
-    journeyBtn.style.transform = "scale(1)";
-    },150);
-});
-
-const surpriseBtn = document.getElementById("surpriseBtn");
-
-surpriseBtn.addEventListener("click",function(){
-
-    alert("There's still one more surprise waiting... ❤️");
 
 });
