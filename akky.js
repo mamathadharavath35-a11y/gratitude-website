@@ -1,36 +1,30 @@
 // ==============================
-// SCROLL REVEAL ANIMATION
+// REVEAL ON SCROLL
 // ==============================
 
-const revealElements = document.querySelectorAll(
-  ".memory-card, .thought-card, .letter-box, .apology-box, .ending, .thank-you"
+const revealItems = document.querySelectorAll(
+".memory-card, .letter-box, .apology-box, .thought-card, .ending, .thank-you"
 );
 
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries)=>{
 
-  entries.forEach((entry) => {
+    entries.forEach((entry)=>{
 
-    if(entry.isIntersecting){
+        if(entry.isIntersecting){
 
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
+            entry.target.classList.add("show");
 
-    }
+        }
 
-  });
+    });
 
 },{
-  threshold:0.15
+    threshold:0.15
 });
 
+revealItems.forEach((item)=>{
 
-revealElements.forEach((el)=>{
-
-  el.style.opacity="0";
-  el.style.transform="translateY(40px)";
-  el.style.transition="0.8s ease";
-
-  observer.observe(el);
+    revealObserver.observe(item);
 
 });
 
@@ -38,38 +32,22 @@ revealElements.forEach((el)=>{
 
 
 // ==============================
-// LETTER TYPEWRITER
+// SMOOTH BUTTON RIPPLE
 // ==============================
 
-const letter = document.querySelector(".letter-content p");
+const button = document.querySelector(".journey-btn");
 
+if(button){
 
-if(letter){
+button.addEventListener("mouseenter",()=>{
 
-const originalText = letter.innerHTML;
+    button.style.transform="translateY(-5px) scale(1.03)";
 
-letter.innerHTML="";
+});
 
-let i=0;
+button.addEventListener("mouseleave",()=>{
 
-function typeLetter(){
-
-  if(i < originalText.length){
-
-    letter.innerHTML += originalText.charAt(i);
-
-    i++;
-
-    setTimeout(typeLetter,10);
-
-  }
-
-}
-
-
-window.addEventListener("load",()=>{
-
-  setTimeout(typeLetter,1000);
+    button.style.transform="translateY(0) scale(1)";
 
 });
 
@@ -82,25 +60,31 @@ window.addEventListener("load",()=>{
 // CINEMATIC ENDING
 // ==============================
 
+const thankSection = document.querySelector(".thank-you");
 const blackScreen = document.querySelector(".black-screen");
 
-let endingPlayed = false;
+let played = false;
 
-window.addEventListener("scroll", () => {
+const endObserver = new IntersectionObserver((entries) => {
 
-    if (endingPlayed) return;
+    entries.forEach((entry) => {
 
-    const reachedBottom =
-        window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
+        if (entry.isIntersecting && !played) {
 
-    if (reachedBottom) {
+            played = true;
 
-        endingPlayed = true;
+            setTimeout(() => {
 
-        setTimeout(() => {
-            blackScreen.classList.add("show");
-        }, 15000); // 15 seconds after reaching the end
+                blackScreen.classList.add("show");
 
-    }
+            }, 7000); // 7 seconds
 
+        }
+
+    });
+
+},{
+    threshold:0.7
 });
+
+endObserver.observe(thankSection);
