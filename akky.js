@@ -57,34 +57,30 @@ button.addEventListener("mouseleave",()=>{
 
 
 // ==============================
-// CINEMATIC ENDING
+// FINAL SURPRISE
 // ==============================
 
-const thankSection = document.querySelector(".thank-you");
-const blackScreen = document.querySelector(".black-screen");
+const scrollDown=document.querySelector(".scroll-down");
+const blackScreen=document.querySelector(".black-screen");
 
-let played = false;
+let endingPlayed=false;
 
-const endObserver = new IntersectionObserver((entries) => {
+window.addEventListener("scroll",()=>{
 
-    entries.forEach((entry) => {
+    if(endingPlayed) return;
 
-        if (entry.isIntersecting && !played) {
+    const rect=scrollDown.getBoundingClientRect();
 
-            played = true;
+    if(rect.top < window.innerHeight){
 
-            setTimeout(() => {
+        endingPlayed=true;
 
-                blackScreen.classList.add("show");
+        setTimeout(()=>{
 
-            }, 7000); // 7 seconds
+            blackScreen.classList.add("show");
 
-        }
+        },2500);
 
-    });
+    }
 
-},{
-    threshold:0.7
 });
-
-endObserver.observe(thankSection);
