@@ -96,6 +96,6 @@ window.addEventListener("scroll", function(){
 
         blackScreen.classList.add("show");
 
-    },2000);
+    },20000);
 
 });
