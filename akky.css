@@ -29,7 +29,6 @@ body{
 
 }
 
-
 /* ===========================
         HERO
 =========================== */
@@ -58,23 +57,23 @@ body{
 
 .hero h1{
 
-    font-size:65px;
+    font-size:clamp(2.5rem,6vw,4.2rem);
 
-    line-height:1.15;
+    line-height:1.2;
 
     color:#ff4f81;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
 }
 
 .hero p{
 
-    font-size:21px;
+    font-size:clamp(1rem,3vw,1.25rem);
 
     color:#666;
 
-    line-height:1.9;
+    line-height:1.5;
 
     margin-bottom:40px;
 
@@ -88,7 +87,7 @@ body{
 
     background:#ff5f8f;
 
-    color:white;
+    color:#fff;
 
     padding:15px 35px;
 
@@ -96,33 +95,23 @@ body{
 
     font-weight:600;
 
-    transition:.4s;
+    transition:.35s;
 
     box-shadow:0 10px 30px rgba(255,95,143,.25);
+
+}
+
+.journey-btn:hover{
+
+    background:#ff4377;
+
+    transform:translateY(-5px);
 
 }
 
 .journey-btn span{
 
     margin-left:8px;
-
-    transition:.3s;
-
-}
-
-.journey-btn:hover{
-
-    transform:translateY(-6px);
-
-    background:#ff4377;
-
-    box-shadow:0 20px 40px rgba(255,95,143,.35);
-
-}
-
-.journey-btn:hover span{
-
-    margin-left:15px;
 
 }
 
@@ -140,11 +129,11 @@ section h2{
 
     text-align:center;
 
-    font-size:50px;
+    font-size:clamp(2rem,5vw,3rem);
 
     color:#ff5f8f;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
 }
 
@@ -154,9 +143,7 @@ section h2{
 
     color:#888;
 
-    margin-bottom:70px;
-
-    font-size:18px;
+    margin-bottom:60px;
 
 }
 
@@ -171,73 +158,36 @@ section h2{
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
     gap:35px;
-    width:100%;
 
 }
 
 .memory-card{
 
-    background:white;
-    width:100%;
-    max-width:420px;
+    background:#fff;
 
     padding:30px;
 
     border-radius:25px;
 
-    transition:.4s;
-
     box-shadow:0 15px 35px rgba(0,0,0,.07);
 
-    cursor:pointer;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.memory-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:100%;
-
-    height:5px;
-
-    left:0;
-
-    top:0;
-
-    background:#ff5f8f;
-
-    transform:scaleX(0);
-
-    transition:.4s;
-
-}
-
-.memory-card:hover::before{
-
-    transform:scaleX(1);
+    transition:.35s;
 
 }
 
 .memory-card:hover{
 
-    transform:translateY(-12px);
+    transform:translateY(-10px);
 
-    box-shadow:0 20px 45px rgba(255,95,143,.20);
+    box-shadow:0 20px 45px rgba(255,95,143,.18);
 
 }
 
 .emoji{
 
-    font-size:60px;
+    font-size:55px;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
 }
 
@@ -245,54 +195,20 @@ section h2{
 
     color:#ff5f8f;
 
-    margin-bottom:18px;
+    margin-bottom:15px;
 
 }
 
 .memory-card p{
 
-    line-height:1.9;
+    line-height:1.5;
 
     color:#666;
 
 }
 
-/* Cute random rotation */
-
-.memory-card:nth-child(1){
-
-    transform:rotate(-2deg);
-
-}
-
-.memory-card:nth-child(2){
-
-    transform:rotate(2deg);
-
-}
-
-.memory-card:nth-child(3){
-
-    transform:rotate(-1deg);
-
-}
-
-.memory-card:nth-child(4){
-
-    transform:rotate(2deg);
-
-}
-
-.memory-card:nth-child(1):hover,
-.memory-card:nth-child(2):hover,
-.memory-card:nth-child(3):hover,
-.memory-card:nth-child(4):hover{
-
-    transform:translateY(-12px) rotate(0deg);
-
-}
 /* ===========================
-        LETTER
+      LETTER
 =========================== */
 
 .letter{
@@ -301,20 +217,19 @@ section h2{
 
     justify-content:center;
 
-    align-items:center;
-
 }
 
 .letter-box{
+
     width:100%;
 
     max-width:850px;
 
-    background:white;
+    background:#fff;
 
-    padding:35px 28px;
+    padding:35px;
 
-    border-radius:30px;
+    border-radius:28px;
 
     box-shadow:0 20px 45px rgba(0,0,0,.08);
 
@@ -328,13 +243,13 @@ section h2{
 
     position:absolute;
 
-    top:-25px;
+    top:-24px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    font-size:40px;
+    font-size:38px;
 
 }
 
@@ -346,11 +261,11 @@ section h2{
 
 .letter-content p{
 
-    line-height:1.7;
+    font-size:17px;
+
+    line-height:1.6;
 
     color:#555;
-
-    font-size:17px;
 
 }
 
@@ -372,43 +287,41 @@ section h2{
 
     background:#fff;
 
-    padding:25px;
+    padding:30px;
 
     border-radius:25px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.07);
+    box-shadow:0 15px 35px rgba(0,0,0,.07);
 
 }
 
 .apology-box p{
 
-    line-height:1.8;
-
     color:#666;
+
+    line-height:1.6;
+
+    font-size:17px;
 
 }
 
 /* ===========================
-        THOUGHTS
+      THOUGHTS
 =========================== */
 
 .thought-container{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
     gap:30px;
-    width: 100%;
 
 }
 
 .thought-card{
 
-    background:white;
-    width:100%;
-    max-width: 420px;
-    margin: auto;
+    background:#fff;
 
     padding:35px;
 
@@ -416,9 +329,9 @@ section h2{
 
     text-align:center;
 
-    transition:.35s;
-
     box-shadow:0 15px 35px rgba(0,0,0,.06);
+
+    transition:.35s;
 
 }
 
@@ -434,7 +347,7 @@ section h2{
 
     color:#ff5f8f;
 
-    margin-bottom:15px;
+    margin-bottom:18px;
 
 }
 
@@ -442,7 +355,7 @@ section h2{
 
     color:#666;
 
-    line-height:1.8;
+    line-height:1.5;
 
 }
 
@@ -462,11 +375,11 @@ section h2{
 
     margin:auto;
 
-    line-height:1.8;
-
-    font-size:19px;
-
     color:#555;
+
+    line-height:1.6;
+
+    font-size:18px;
 
 }
 
@@ -488,179 +401,92 @@ section h2{
 
 .thank-you h2{
 
-    margin-bottom:35px;
+    margin-bottom:25px;
 
 }
 
 .thank-you p{
-
-    font-size:20px;
 
     color:#666;
 
-    line-height:1.8;
+    line-height:1.6;
+
+    font-size:19px;
 
 }
 
 /* ===========================
-      SCROLL ANIMATION
+      REVEAL ANIMATION
 =========================== */
 
 .memory-card,
+.letter-box,
+.apology-box,
 .thought-card,
-.letter-box,
-.apology-box{
+.ending,
+.thank-you{
 
-    transition:.6s;
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:all .8s ease;
 
 }
 
-.memory-card:hover,
-.thought-card:hover{
+.show{
 
-    transform:translateY(-10px);
+    opacity:1 !important;
+
+    transform:translateY(0) !important;
 
 }
 
 /* ===========================
-      RESPONSIVE
-=========================== */
-
-@media (max-width:768px){
-
-.hero{
-
-padding:40px 20px;
-
-}
-
-.hero h1{
-
-font-size:2.4rem;
-
-}
-
-.hero p{
-
-font-size:1rem;
-
-}
-
-.journey-btn{
-
-padding:14px 26px;
-
-font-size:15px;
-
-}
-
-section{
-
-padding:60px 20px;
-
-}
-
-section h2{
-
-font-size:2rem;
-
-}
-
-.memory-container,
-.thought-container{
-
-grid-template-columns:1fr;
-
-}
-
-.memory-card,
-.thought-card{
-
-max-width:100%;
-
-}
-
-.letter-box,
-.apology-box{
-
-padding:25px;
-
-}
-
-.letter-content p,
-.apology-box p,
-.ending p,
-.thank-you p{
-
-font-size:16px;
-
-line-height:1.8;
-
-}
-
-.goodbye-content h1{
-
-font-size:2rem;
-
-}
-
-.signature{
-
-font-size:16px;
-
-}
-
-}
-/* ===========================
-      CINEMATIC ENDING
+      BLACK SCREEN
 =========================== */
 
 .black-screen{
 
     position:fixed;
 
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100vh;
+    inset:0;
 
     background:#000;
 
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
+    text-align:center;
+
     opacity:0;
+
     visibility:hidden;
 
     transition:opacity 2s ease;
 
-    z-index:99999;
+    z-index:9999;
 
 }
 
 .black-screen.show{
 
     opacity:1;
+
     visibility:visible;
-
-}
-
-.black-content{
-
-    text-align:center;
-
-    color:white;
 
 }
 
 .black-content h1{
 
-    font-size:45px;
+    color:#fff;
 
-    line-height:1.5;
+    font-size:42px;
+
+    line-height:1.3;
 
     opacity:0;
 
@@ -670,7 +496,7 @@ font-size:16px;
 
 }
 
-.black-screen.show h1{
+.black-screen.show .black-content h1{
 
     opacity:1;
 
@@ -680,25 +506,74 @@ font-size:16px;
 
 .black-content p{
 
-    margin-top:35px;
+    margin-top:25px;
 
     color:#aaa;
 
-    font-size:20px;
+    font-size:18px;
 
 }
 
+/* ===========================
+      RESPONSIVE
+=========================== */
+
 @media(max-width:768px){
+
+section{
+
+    padding:60px 20px;
+
+}
+
+.hero{
+
+    padding:35px 20px;
+
+}
+
+.memory-container,
+.thought-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.memory-card,
+.thought-card{
+
+    max-width:100%;
+
+}
+
+.letter-box,
+.apology-box{
+
+    padding:25px;
+
+}
+
+.letter-content p,
+.apology-box p,
+.thought-card p,
+.ending p,
+.thank-you p{
+
+    font-size:16px;
+
+    line-height:1.5;
+
+}
 
 .black-content h1{
 
-font-size:32px;
+    font-size:30px;
 
 }
 
 .black-content p{
 
-font-size:17px;
+    font-size:16px;
 
 }
 
