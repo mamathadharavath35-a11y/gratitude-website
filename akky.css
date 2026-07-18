@@ -18,9 +18,9 @@ body{
 
     background:linear-gradient(
         135deg,
-        #fff9fa,
-        #fff5f8,
-        #ffffff
+        #fff9fa ,
+        #d1a9b5,
+        #ffffff,
     );
 
     color:#444;
@@ -574,6 +574,72 @@ section{
 .black-content p{
 
     font-size:16px;
+
+}
+
+}
+
+/* ===========================
+      SCROLL DOWN
+=========================== */
+
+.scroll-down{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:#888;
+
+}
+
+.surprise-text{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+    color:#777;
+
+}
+
+.arrow{
+
+    font-size:34px;
+
+    color:#ff5f8f;
+
+    animation:bounce 1.5s infinite;
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(10px);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+.surprise-text{
+
+font-size:16px;
+
+}
+
+.arrow{
+
+font-size:30px;
 
 }
 
