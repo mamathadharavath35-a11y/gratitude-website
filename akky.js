@@ -83,19 +83,24 @@ window.addEventListener("load",()=>{
 // ==============================
 
 const blackScreen = document.querySelector(".black-screen");
-const thankSection = document.querySelector(".thank-you");
 
+let endingPlayed = false;
 
-window.addEventListener("scroll", function(){
+window.addEventListener("scroll", () => {
 
-    const sectionTop = thankSection.offsetTop;
-    const scrollPosition = window.scrollY + window.innerHeight;
+    if (endingPlayed) return;
 
+    const reachedBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
 
-    if(scrollPosition > sectionTop + 100){
+    if (reachedBottom) {
 
-        blackScreen.classList.add("show");
+        endingPlayed = true;
 
-    },30000);
+        setTimeout(() => {
+            blackScreen.classList.add("show");
+        }, 15000); // 15 seconds after reaching the end
+
+    }
 
 });
